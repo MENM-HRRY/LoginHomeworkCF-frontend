@@ -22,7 +22,7 @@ El proyecto está compuesto por los siguientes archivos:
 
 
 
-![FormRegistro](https://github.com/user-attachments/assets/591fc63e-29c8-4619-8dfd-1096618f7c5c)
+https://github.com/user-attachments/assets/591fc63e-29c8-4619-8dfd-1096618f7c5c
 
 
 ## Uso
