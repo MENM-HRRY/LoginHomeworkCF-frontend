@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" class="dark-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="style.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+    <!-- Contenedor para el cambio de tema -->
+    <div class="theme-toggle">
+        <span class="theme-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+            </svg></span> <!-- solesito -->
+        <label class="theme-toggle-switch">
+            <input type="checkbox" id="themeToggle" checked> <!-- Checkbox para cambiar el tema -->
+            <span class="slider"></span> <!-- interruptor -->
+        </label>
+        <span class="theme-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"/>
+            </svg></span> <!-- luna_lunera -->
+    </div>
+
+    <main class="container">
+        <header>
+            <h1>Registro de Usuario</h1>
+            <canvas id="titleParticles" class="particles-canvas"></canvas>
+        </header>
+        
+        <!-- Formulario de registro -->
+        <form id="registroForm" novalidate>
+            <!-- Campo para el nombre completo -->
+            <div class="form-group">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" class="input-field" placeholder="Nombre y apellidos" required>
+                <div id="nombreError" class="error-message">El nombre completo es requerido</div> <!-- Mensaje de error -->
+            </div>
+            
+            <!-- Campo para el correo electrónico -->
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" class="input-field" placeholder="ejemplo@correo.com" required>
+                <div id="emailError" class="error-message">Ingrese un correo electrónico válido</div> <!-- Mensaje de error -->
+            </div>
+            
+            <!-- Campo para la contraseña -->
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <div class="password-container">
+                    <input type="password" id="password" class="input-field" placeholder="Min. 8 caracteres" required>
+                    <button type="button" id="togglePassword" class="toggle-password" aria-label="Ver/ocultar contraseña">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                        </svg> <!-- Botón para mostrar/ocultar la contraseña -->
+                    </button>
+                </div>
+                <div class="password-strength">
+                    <div id="strengthMeter" class="strength-meter"></div> <!-- Medidor de fuerza de la contraseña -->
+                </div>
+                <div id="strengthText" class="strength-text"></div> <!-- Texto que muestra la fuerza de la contraseña -->
+                <div id="passwordError" class="error-message">La contraseña debe tener al menos 8 caracteres</div> <!-- Mensaje de error -->
+                <div id="passwordGuide" class="password-guide"><!-- Guía textual para construir una contraseña segura -->
+                </div> 
+            </div>
+            
+            <button type="submit" id="submitBtn" class="submit-btn">Enviar</button> <!-- Botón para enviar el formulario -->
+        </form>
+        
+        <!-- Mensaje de bienvenida que se muestra después de enviar el formulario -->
+        <div id="welcomeMessage" class="welcome-message">
+            <h2>¡Bienvenido/a!</h2>
+            <p id="dateTimeInfo"></p> <!-- fecha y hora -->
+        </div>
+    </main>
+     
+    <svg id="footer-logo" width="240" height="40" viewBox="0 0 250 40" xmlns="http://www.w3.org/2000/svg">
+        <text x="10" y="20" fill="currentColor" font-family="Arial, sans-serif" font-size="16">Tarea de:</text>
+        <g transform="translate(90, 1)"> <!-- Movido más arriba -->
+            <text x="10" y="12" fill="white" font-size="12">Max Moreno</text>
+            <text x="10" y="25" fill="white" font-size="12">▓ Abril 2025</text>
+        </g>
+    </svg>
+    
+    <script src="script.js"></script> <!-- Enlace al archivo JavaScript -->
+    <script src="efectoTexto.js"></script> <!-- Enlace al archivo de efectos de texto -->
+     
+</body>
+</html>

@@ -1,0 +1,350 @@
+    :root {
+    /* Tema claro (por defecto) */
+    --bg-primary: #f0f2f5;
+    --bg-secondary: #ffffff;
+    --color-text: #333333;
+    --color-text-secondary: #666666;
+    --color-primary: #008080;
+    --color-error: #ff3333;
+    --color-success: #4CAF50;
+    --color-warning: #FFC107;
+    --color-info: #2196F3;
+    --border-color: #dddddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Tema oscuro */
+.dark-mode {
+    --bg-primary: #292639;
+    --bg-secondary: #332f4b;
+    --color-text: #e0e0e0;
+    --color-text-secondary: #b0b0b0;
+    --color-primary: #6c88c4;
+    --border-color: #444444;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 28px;
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: var(--bg-secondary);
+    color: var(--color-text);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input-field:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(108, 136, 196, 0.2);
+}
+
+.input-field.error {
+    border-color: var(--color-error);
+}
+
+.input-field.valid {
+    border-color: var(--color-success);
+}
+
+.error-message {
+    color: var(--color-error);
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+.error-message.visible {
+    display: block;
+}
+
+.password-strength {
+    height: 5px;
+    width: 100%;
+    background-color: var(--border-color);
+    position: relative;
+    margin-top: 8px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.strength-meter {
+    height: 100%;
+    width: 0;
+    transition: all 0.3s;
+    border-radius: 3px;
+}
+
+.strength-text {
+    font-size: 14px;
+    margin-top: 5px;
+    transition: all 0.3s;
+}
+
+.password-container {
+    position: relative;
+}
+
+
+.password-guide {
+    font-size: 14px;
+    margin-top: 8px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}
+
+.password-guide span {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.password-guide .valid-criteria {
+    color: var(--color-success);
+}
+
+.password-guide .invalid-criteria {
+    color: var(--color-error);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 5px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    filter: brightness(1.1);
+}
+
+.welcome-message {
+    display: none;  
+    text-align: center;  
+    background-color: var(--color-success);  
+    color: white;  
+    padding: 15px;  
+    border-radius: 4px; 
+    margin-top: 20px;  
+}
+
+.welcome-message.visible {
+    display: block;  
+    animation: fadeIn 0.5s; 
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text);
+    font-size: 14px;
+}
+
+.theme-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+
+.theme-toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+    transition: .3s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--color-primary);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.theme-icon {
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+
+#footer-logo {
+  background-image: url('data:image/png;base64,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');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 250px;
+  height: 116px;
+  position: fixed;
+  bottom: -35px;
+  left: 15px;
+  z-index: 1000;
+  opacity: 0.8;
+}
+
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+#particles-js {
+    top: 10px; /* Ajustar según la posición de tu título */
+    height: 60px; /* Altura del área de partículas */
+    overflow: hidden;
+}
+
+/* Estilo base para el footer SVG */
+#footer-logo g {
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Estilo para el tema claro - recuadro azul oscuro */
+.light-mode #footer-logo g {
+    background-color: #1a365d; /* Color azul oscuro */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el tema oscuro - sin recuadro o con otro estilo */
+.dark-mode #footer-logo g {
+    background-color: transparent; /* Sin fondo en modo oscuro */
+}
+
+/* El texto sera visible en ambos temas */
+#footer-logo text {
+    fill: currentColor;
+}
+
+.light-mode #footer-logo g text {
+    fill: white; /* Texto blanco para contraste con fondo azul oscuro */
+}
+
+header {
+    position: relative;
+    display: block;  
+    margin: 0 auto 20px;  
+    text-align: center;  
+    width: fit-content;  
+    max-width: 100%;  
+}
+
+.particles-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* el h1 debe tener display inline-block para mejor control */
+header h1 {
+    display: inline-block;
+    position: relative;
+    padding: 10px 20px;  
+    margin: 0;  
+}
+.animar {
+    animation: aparecerLetra 0.6s forwards;
+}
